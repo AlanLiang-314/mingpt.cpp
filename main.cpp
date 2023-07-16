@@ -26,24 +26,24 @@ struct gpt2_hparams {
 struct gpt2_layer {
     // normalization
     struct ggml_tensor * ln_1_g;
-    struct ggml_tensor * ln_1_b;
+    // struct ggml_tensor * ln_1_b;
 
     struct ggml_tensor * ln_2_g;
-    struct ggml_tensor * ln_2_b;
+    // struct ggml_tensor * ln_2_b;
 
     // attention
     struct ggml_tensor * c_attn_attn_w;
-    struct ggml_tensor * c_attn_attn_b;
+    // struct ggml_tensor * c_attn_attn_b;
 
     struct ggml_tensor * c_attn_proj_w;
-    struct ggml_tensor * c_attn_proj_b;
+    // struct ggml_tensor * c_attn_proj_b;
 
     // mlp
     struct ggml_tensor * c_mlp_fc_w;
-    struct ggml_tensor * c_mlp_fc_b;
+    // struct ggml_tensor * c_mlp_fc_b;
 
     struct ggml_tensor * c_mlp_proj_w;
-    struct ggml_tensor * c_mlp_proj_b;
+    // struct ggml_tensor * c_mlp_proj_b;
 };
 
 struct gpt2_model {
@@ -51,7 +51,7 @@ struct gpt2_model {
 
     // normalization
     struct ggml_tensor * ln_f_g;
-    struct ggml_tensor * ln_f_b;
+    // struct ggml_tensor * ln_f_b;
 
     struct ggml_tensor * wte;     // position embedding
     struct ggml_tensor * wpe;     //    token embedding
@@ -227,7 +227,7 @@ bool gpt2_model_load(const std::string & fname, gpt2_model & model, gpt_vocab & 
         model.layers.resize(n_layer);
 
         model.ln_f_g = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd);
-        model.ln_f_b = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd);
+        // model.ln_f_b = ggml_new_tensor_1d(ctx, GGML_TYPE_F32, n_embd);
 
         model.wte     = ggml_new_tensor_2d(ctx, wtype,         n_embd, n_vocab);
         model.wpe     = ggml_new_tensor_2d(ctx, GGML_TYPE_F32, n_embd, n_ctx);
